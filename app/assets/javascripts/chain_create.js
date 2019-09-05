@@ -16,13 +16,13 @@ $(document).on("click", ".new-chain-btn-add", function () {
     <div class="card-body">
       <h4 class="card-title">${bookTitle}</h4>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><p>Author:${bookAuthor}</P></li>
-        <li class="list-group-item"><p>RegistrationDate:${bookCreated_at}</P></li>
+        <li class="list-group-item"><p>著者 : ${bookAuthor}</P></li>
+        <li class="list-group-item"><p>登録日 : ${bookCreated_at}</P></li>
       </ul>
       <button class="btn btn-danger new-chain-btn-remove" 
       data-book-id="${bookId}" data-book-title="${bookTitle}" 
       data-book-author="${bookAuthor}" data-book-image="${bookImage}" 
-      data-book-created_at="${bookCreated_at}" >Remove</button>
+      data-book-created_at="${bookCreated_at}" >削除</button>
     </div>
     <input type="hidden" name="chain[book_ids][]" value="${bookId}" />
     </div>`;
@@ -42,13 +42,13 @@ $(document).on("click", ".new-chain-btn-remove", function () {
     <div class="card-body">
       <h4 class="card-title">${bookTitle}</h4>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item"><p>Author:${bookAuthor}</P></li>
-        <li class="list-group-item"><p>RegistrationDate:${bookCreated_at}</P></li>
+        <li class="list-group-item"><p>著者 : ${bookAuthor}</P></li>
+        <li class="list-group-item"><p>登録日 : ${bookCreated_at}</P></li>
       </ul>
       <button class="btn btn-primary new-chain-btn-add" 
       data-book-id="${bookId}" data-book-title="${bookTitle}" 
       data-book-author="${bookAuthor}" data-book-image="${bookImage}" 
-      data-book-created_at="${bookCreated_at}">Add</button>
+      data-book-created_at="${bookCreated_at}">追加</button>
     </div>
     </div>`;
   $("#bookshelf").append(returnHTML);

@@ -11,13 +11,7 @@
     </ul>
   </div>
 
-  <div class="card-body">
-    <%= link_to "MakeNewChain", "/users/#{current_user.id}/chains/new", class: "btn btn-primary" %>
-    <%= link_to "RegisterNewBook", "/users/#{current_user.id}/books/new", class: "btn btn-primary" %>
-  </div>
-
-
-    <div class="card-group">
+    <div class="card-group w-75">
       <% @books.each do |book| %>
         <div class="card" style="min-width:20%; max-width:20%">
           <img class="card-img-top" src="<%= book.image %>" alt="">
@@ -25,7 +19,7 @@
               <h4 class="card-title"><%= book.title %></h4>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><p>著者 : <%= book.author %></P></li>
-                <li class="list-group-item"><p>登録日 : <%= book.created_at %></P></li>
+                <li class="list-group-item"><p>登録日 : <%= book.created_at.strftime("%Y-%m-%d %H:%M") %></P></li>
               </ul>
             </div>
         </div>

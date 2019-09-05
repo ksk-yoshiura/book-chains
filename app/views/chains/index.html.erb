@@ -1,28 +1,22 @@
 <div>
-  <form class="form-inline">
+  <form class="form-inline justify-content-end">
     <input class="form-cotrol mr-sm-2" type="search" placeholder="search chains" aria-label="search chains">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
       
-    
   <h4>NewChainsList</h4>
-
-  <div class="card-group">
+  <div class="card-group w-50">
     <% @chains.each do |books| %>
       <% books.each do |book| %>
-        <div class="card" style="min-width:20%; max-width:20%">
+        <div class="card" style="min-width:25%; max-width:25%">
           <img class="card-img-top" src="<%= book.image %>" alt="">
             <div class="card-body">
-              <h4 class="card-title"><%= book.title %></h4>
+              <p class="card-title"><%= book.title %></p>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item"><p>著者 : <%= book.author %></P></li>
-                
               </ul>
             </div>
         </div>
       <% end %>
-      <div class="card" style="min-width:20%; max-width:20%">
-        
-      </div>
     <% end %>
   </div>
