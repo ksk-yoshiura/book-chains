@@ -2,8 +2,7 @@ class BooksController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   
   def index
-    @books = Book.all
-   
+    
   end
 
   def new
@@ -35,7 +34,6 @@ class BooksController < ApplicationController
 
   private
   def book_params
-  
     params.permit(:image, :title, :author, :user_id)
   end
 

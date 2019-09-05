@@ -7,6 +7,22 @@
     
   <h4>NewChainsList</h4>
 
-
-
-
+  <div class="card-group">
+    <% @chains.each do |books| %>
+      <% books.each do |book| %>
+        <div class="card" style="min-width:20%; max-width:20%">
+          <img class="card-img-top" src="<%= book.image %>" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= book.title %></h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><p>著者 : <%= book.author %></P></li>
+                
+              </ul>
+            </div>
+        </div>
+      <% end %>
+      <div class="card" style="min-width:20%; max-width:20%">
+        
+      </div>
+    <% end %>
+  </div>
