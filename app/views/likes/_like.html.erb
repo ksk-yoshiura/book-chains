@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <% if current_user.already_liked?(chain_info) %>
+  
+    <%= link_to chain_like_path(chain_id: chain_info[:id], id: chain_info[:like].find_by(user_id: current_user.id).id), method: :delete, remote: true do %>
+      <div class="vertical_like">
+        <%= fa_icon("heart", class: "red-icon", id: "likes_buttons_#{chain_info[:id]}") %>
+        <span class="gray-text text-darken-2">
+          いいね!
+        <%= chain_info[:like].count %>
+        </span>
+      </div>
+    <% end %>
+    
+  <% else %>
+    <%= link_to chain_likes_path(chain_info[:id]), method: :post, remote: true do %>
+      <div class="vertical_like">
+        <%= fa_icon("heart-o", class: "gray-icon", id: "likes_buttons_#{chain_info[:id]}") %>
+        <span class="gray-text">
+          いいね!
+        <%= chain_info[:like].count %>
+        </span>
+      </div>
+  <% end %>
+  <% end %>
+<% else %>
+    <div class="vertical_like">
+      <%= fa_icon("heart", class: "gray-icon") %>
+      <span class="gray-text">
+      いいね!
+        <%= chain_info[:like].count %> 
+      </span>
+    </div>
+<% end %>

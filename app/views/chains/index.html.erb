@@ -5,9 +5,13 @@
   </form>
       
   <h4>NewChainsList</h4>
+  
   <div class="card-group w-50">
-    <% @chains.each do |books| %>
-      <% books.each do |book| %>
+    <% @chains.each do |chain| %>
+      <div id="likes_buttons_<%= chain[:id] %>">
+        <%= render partial: 'likes/like', locals: { chain_info: chain} %>
+      </div>
+      <% chain[:new_chain].each do |book| %>
         <div class="card" style="min-width:25%; max-width:25%">
           <img class="card-img-top" src="<%= book.image %>" alt="">
             <div class="card-body">
@@ -19,4 +23,4 @@
         </div>
       <% end %>
     <% end %>
-  </div>
+</div>
