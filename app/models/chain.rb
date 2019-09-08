@@ -3,6 +3,12 @@ class Chain < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
   
+  validates :user_id, presence: true
+  validates :book1_id, presence: true
+  validates :book2_id, presence: true
+  validates :book3_id, presence: true
+  validates :book4_id, presence: true
+
   def self.including_books(chain)
     book_arr = []
     book1 = Book.find(chain.book1_id)

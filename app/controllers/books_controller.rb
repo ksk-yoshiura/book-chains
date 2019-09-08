@@ -10,7 +10,7 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(image: book_params[:image], title: book_params[:title], author: book_params[:author], user_id: current_user.id)
+    Book.create(image: book_params[:image], title: book_params[:title], author: book_params[:author], furigana: book_params[:furigana], user_id: current_user.id)
     redirect_to controller: :users
   end
 
@@ -34,7 +34,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.permit(:image, :title, :author, :user_id)
+    params.permit(:image, :title, :author, :furigana, :user_id)
   end
 
   def move_to_index
