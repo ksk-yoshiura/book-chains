@@ -2,7 +2,6 @@ class Chain < ApplicationRecord
   has_many :books
   belongs_to :user
   has_many :likes, dependent: :destroy
-  has_many :liked_users, through: :likes, source: :user
   
   def self.including_books(chain)
     book_arr = []

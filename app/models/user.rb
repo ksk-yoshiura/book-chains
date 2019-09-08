@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :chains, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :liked_chains, through: :likes, source: :chain
+  
 
   def already_liked?(chain)
     self.likes.exists?(chain_id: chain[:id])
