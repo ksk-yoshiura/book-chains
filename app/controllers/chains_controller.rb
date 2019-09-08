@@ -6,11 +6,11 @@ class ChainsController < ApplicationController
     chains = Chain.all.order("created_at DESC")
     chain_arr = []
     
-    
     chains.each do |chain|
       chain_hash = {}
       chain_hash[:id] = chain.id
       chain_hash[:user_id] = chain.user_id
+      chain_hash[:nickname] = chain.user.nickname
       chain_hash[:new_chain] = Chain.including_books(chain)
       likes = Like.where(chain_id: chain.id)
       chain_hash[:like] = likes
@@ -18,7 +18,6 @@ class ChainsController < ApplicationController
     end
     
     @chains = chain_arr
-    
   end
   
   def show

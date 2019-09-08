@@ -8,6 +8,7 @@
   
   <div class="card-group w-50">
     <% @chains.each do |chain| %>
+      <span><%= chain[:nickname] %></span>
       <div id="likes_buttons_<%= chain[:id] %>">
         <%= render partial: 'likes/like', locals: { chain_info: chain} %>
       </div>
