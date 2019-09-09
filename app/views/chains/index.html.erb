@@ -5,7 +5,13 @@
   </form>
       
   <h4>NewChainsList</h4>
-  
+  <div class= "user_ranking">
+    <p>TheMostPouplarChainMakers</p>
+    <% @user_ranks.each_with_index do |user, index| %>
+      <span>第<%= index + 1 %>位</span>
+      <%= user.nickname %>
+    <% end %>
+  </div>
   <div class="card-group w-50">
     <% @chains.each do |chain| %>
       <span><%= chain[:nickname] %></span>

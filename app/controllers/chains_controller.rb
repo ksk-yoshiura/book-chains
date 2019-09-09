@@ -16,14 +16,19 @@ class ChainsController < ApplicationController
       chain_hash[:like] = likes
       chain_arr << chain_hash
     end
-    
+
     @chains = chain_arr
+    num_chain_likes = Like.group(:chain_id).order('count(chain_id) desc').limit(3).pluck(:chain_id)
+    chain_expert = Chain.where(id: num_chain_likes).pluck(:user_id)
+    @user_ranks = User.where(id: chain_expert)
   end
   
   def show
 
   end
   
+  
+
   def new
     @books = Book.where(user_id: current_user.id)
   end  

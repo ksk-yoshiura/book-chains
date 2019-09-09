@@ -1,8 +1,5 @@
 $(function() {
 
-  
-
-
 $(document).on("click", ".new-chain-btn-add", function () {
     
   $(this).parent().parent().remove();
