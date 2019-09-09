@@ -12,22 +12,8 @@
       <%= user.nickname %>
     <% end %>
   </div>
+
   <div class="card-group w-50">
-    <% @chains.each do |chain| %>
-      <span><%= chain[:nickname] %></span>
-      <div id="likes_buttons_<%= chain[:id] %>">
-        <%= render partial: 'likes/like', locals: { chain_info: chain} %>
-      </div>
-      <% chain[:new_chain].each do |book| %>
-        <div class="card" style="min-width:25%; max-width:25%">
-          <img class="card-img-top" src="<%= book.image %>" alt="">
-            <div class="card-body">
-              <p class="card-title"><%= book.title %></p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><p>著者 : <%= book.author %></P></li>
-              </ul>
-            </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render partial: 'chain', locals: { chains: @chains} %>
+  </div>
 </div>

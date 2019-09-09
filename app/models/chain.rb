@@ -21,4 +21,19 @@ class Chain < ApplicationRecord
     book_arr << book3
     book_arr << book4
   end
+
+  def self.chain_arr_make(chains)
+    chain_arr = []
+    chains.each do |chain|
+      chain_hash = {}
+      chain_hash[:id] = chain.id
+      chain_hash[:user_id] = chain.user_id
+      chain_hash[:nickname] = chain.user.nickname
+      chain_hash[:new_chain] = Chain.including_books(chain)
+      likes = Like.where(chain_id: chain.id)
+      chain_hash[:like] = likes
+      chain_arr << chain_hash
+    end
+    return chain_arr
+  end
 end
