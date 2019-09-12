@@ -17,15 +17,22 @@ class BooksController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
-    book.destroy if book.user_id == current_user.id
+    if params[:user_id].to_i == current_user.id
+      if book.destroy 
+        Chain.judge_and_destroy(book)
+      end
+    end
+    redirect_to controller: :users
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
 
   def update
     book = Book.find(params[:id])
     book.update(book_params) if book.user_id == current_user.id
+    redirect_to controller: :users
   end
 
   private

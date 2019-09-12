@@ -21,13 +21,16 @@ class ChainsController < ApplicationController
   end  
 
   def create
-    @chain = Chain.create(book1_id: chain_params["book_ids"][0], book2_id: chain_params["book_ids"][1], book3_id: chain_params["book_ids"][2], book4_id: chain_params["book_ids"][3], user_id: chain_params["user_id"])
+    if params[:chain].values[0].length == 4
+      @chain = Chain.create(book1_id: chain_params["book_ids"][0], book2_id: chain_params["book_ids"][1], book3_id: chain_params["book_ids"][2], book4_id: chain_params["book_ids"][3], user_id: chain_params["user_id"])
+    end
     redirect_to action: 'new'
   end
   
   def destroy
     chain = Chain.find(params[:id])
-    chain.destroy if chain.user_id == current_user.id
+    chain.destroy if params[:user_id].to_i == current_user.id
+    redirect_to controller: :users
   end
 
   private
