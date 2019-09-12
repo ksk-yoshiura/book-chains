@@ -1,27 +1,32 @@
-<h3>MakeNewChain</h3>
 <div class="container" >
+  <h3>MakeNewChain</h3>
+  <div class="card-header">
   <form action="/users/<%= current_user.id %>/chains" method="post" >
     <div id="make-new-chain" class="card-group" ></div>
     <input type="submit" value ="RegisterNewChain" class= "btn btn-primary btn-block" >
   </form>
-</div>
+
 
 <h3>BookShelf</h3>
-    <div class="card-group" id="bookshelf">
+  <div class="book-container fadein_area">
+    <ul>
       <% @books.each do |book| %>
-        <div class="card" style="min-width:20%; max-width:20%" data-book-id="<%= book.id %>" >
+        <li class="card" style="min-width:20%; max-width:20%" data-book-id="<%= book.id %>" >
           <img class="card-img-top" src="<%= book.image %>" alt="" >
             <div class="card-body">
-              <p class="card-title" ><%= book.title %></p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"  ><p>著者 : <%= book.author %></P></li>
-                <li class="list-group-item" ><p>登録日 : <%= book.created_at %></P></li>
-              </ul>
+              <p class="card-title"><%= book.title %></p>
+              <p>著者 : <%= book.author %></P>
+              <p>登録日 : <br><%= book.created_at.strftime("%Y-%m-%d") %></P>
+              
               <button class="btn btn-primary new-chain-btn-add" 
               data-book-id="<%= book.id %>" data-book-title="<%= book.title %>"
               data-book-author="<%= book.author %>" data-book-created_at="<%= book.created_at %>"
               data-book-image="<%= book.image %>">追加</button>
             </div>
-        </div>
-      <% end %>
-    </div>
+        
+        </li>
+    <% end %>
+    </ul>
+  </div>
+  
+</div>
