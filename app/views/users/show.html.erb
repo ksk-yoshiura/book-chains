@@ -1,0 +1,38 @@
+<div class="container">
+  
+  <div class="card-header">
+    <ul class="nav nav-tabs nav-fill" id="othersTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="popular-chains-contents-tab" href="#popular-chains-contents" data-toggle="tab" role="tab" aria-controls="popular-chains-contents" aria-selected="true">
+          TheMostPopularChains
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="chains-contents-tab" href="#chains-contents" data-toggle="tab" role="tab" aria-controls="chains-contents" aria-selected="true">
+          Chains
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="books-contents-tab" href="#books-contents" data-toggle="tab" role="tab" aria-controls="books-contents" aria-selected="true">
+          BookShelf
+        </a>
+      </li>
+    </ul>
+    
+    <div class="tab-content mt-3" id="othersTabContent">
+      <div id="popular-chains-contents" class="tab-pane fade show active" role="tabpanel" aria-labelledby="popular-chains-contents-tab" >
+        <h3>TheMostPopularChains</h3>
+        <%= render partial: 'chains/chain', locals: { chains: @popular_chains} %>
+      </div>
+      
+      <div id="chains-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="chains-contents-tab" >
+        <h3>Chains</h3>
+        <%= render partial: 'chains/chain', locals: { chains: @chains} %>
+      </div>
+      
+      <div id="books-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="books-contents-tab" >
+        <h3>Bookshelf</h3>
+        <%= render partial: 'books/book', locals: { books: @books} %>
+      </div>
+  </div>
+</div>

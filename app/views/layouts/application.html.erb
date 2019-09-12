@@ -25,9 +25,6 @@
             </span> 
               <ul class="navbar-nav justify-content-end">
                 <li class="nav-item nav-link" >
-                  <%= link_to "Top", "#", class:"nav-link" %>
-                </li>
-                <li class="nav-item nav-link" >
                   <%= link_to "MyPage", "/users/", class:"nav-link" %>
                 </li>
                 <li class="nav-item nav-link" >
@@ -59,6 +56,10 @@
     </nav>
 
     <%= yield %>
+    
+    <div id="pagetop">
+      <%= fa_stacked_icon("arrow-up",class: "fa-4x") %>
+    </div>
 
   </main>
     
@@ -69,6 +70,6 @@
       </p>
     </div>
   </footer>
-  
+
   </body>
 </html>

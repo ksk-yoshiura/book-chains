@@ -4,4 +4,19 @@
   @import "chain";
   @import "likes";
 
-  * {text-decoration:none;}
+  * {
+    text-decoration:none;
+    list-style:none;
+  }
+  
+  .container {
+    width:100%;
+    height:100%;
+  }
+
+  #pagetop{
+    position:fixed;
+    right:20px;
+    bottom: 60px;
+    cursor:pointer;
+  }

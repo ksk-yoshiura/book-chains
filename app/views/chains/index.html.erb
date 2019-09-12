@@ -1,19 +1,25 @@
-<div>
+<div class="container" >
   <form class="form-inline justify-content-end">
     <input class="form-cotrol mr-sm-2" type="search" placeholder="search chains" aria-label="search chains">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
       
-  <h4>NewChainsList</h4>
-  <div class= "user_ranking">
-    <p>TheMostPouplarChainMakers</p>
+  <table class= "table table-bordered user_ranking">
+    <tr>人気職人</tr>
+    <tr>
     <% @user_ranks.each_with_index do |user, index| %>
+      <td>
       <span>第<%= index + 1 %>位</span>
+      <%= link_to user_path(id: user.id), method: :get do %>
       <%= user.nickname %>
+      <% end %>
+      </td>
     <% end %>
-  </div>
+    </tr>
+  </table>
+  
+  <h4>NewChainsList</h4>
 
-  <div class="card-group w-50">
     <%= render partial: 'chain', locals: { chains: @chains} %>
-  </div>
+  
 </div>

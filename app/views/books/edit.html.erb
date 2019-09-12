@@ -1,38 +1,36 @@
 <div class="container text-center">
-<h4>RegisterNewBook</h4>
-
-<%= form_tag("/users/#{current_user.id}/books", method: :post) do %>
+<%= form_tag(user_book_path, method: :patch) do %>
   <div class="form-group row">
     <label for="inputTitle" class="col-sm-2 col-form-label">タイトル</label>
       <div class="col-sm-10">
-        <input required type="string" name="title" class="form-control" id="inputTitle" placeholder="作品名">
+        <input required type="string" name="title" class="form-control" id="inputTitle" placeholder="作品名" value="<%= @book.title %>">
       </div>
   </div>
-
+  
   <div class="form-group row"> 
     <label for="inputCoverDesign" class="col-sm-2 col-form-label">ふりがな</label>
       <div class="col-sm-10">
-        <input required type="text" name="furigana" class="form-control" id="inputFurigana" placeholder="ふりがな">
+        <input required type="text" name="furigana" class="form-control" id="inputFurigana" placeholder="ふりがな" value="<%= @book.furigana %>">
       </div>
   </div>
 
   <div class="form-group row">  
     <label for="inputAuthor" class="col-sm-2 col-form-label">著者</label>
       <div class="col-sm-10">
-        <input required type="string" name="author" class="form-control" id="inputAuthor" placeholder="著者名">
+        <input required type="string" name="author" class="form-control" id="inputAuthor" placeholder="著者名" value="<%= @book.author %>">
       </div>
   </div>
 
   <div class="form-group row"> 
     <label for="inputCoverDesign" class="col-sm-2 col-form-label">Image</label>
       <div class="col-sm-10">
-        <input required type="text" name="image" class="form-control" id="inputImage" placeholder="画像URL">
+        <input required type="text" name="image" class="form-control" id="inputImage" placeholder="画像URL"  value="<%= @book.image %>">
       </div>
   </div>
 
   <div class="form-group row"> 
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary send">登録</button>
+      <button type="submit" class="btn btn-primary send">更新</button>
     </div>
   </div>
 <% end %>

@@ -1,17 +1,35 @@
-    <% chains.each do |chain| %>
-      <span><%= chain[:nickname] %></span>
-      <div id="likes_buttons_<%= chain[:id] %>">
-        <%= render partial: 'likes/like', locals: { chain_info: chain} %>
-      </div>
-      <% chain[:new_chain].each do |book| %>
-        <div class="card" style="min-width:25%; max-width:25%">
-          <img class="card-img-top" src="<%= book.image %>" alt="">
-            <div class="card-body">
-              <p class="card-title"><%= book.title %></p>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><p>著者 : <%= book.author %></P></li>
-              </ul>
-            </div>
+<div class="chain-container fadein_area">
+  <% chains.each do |chain| %>
+    <ul>
+    <% chain[:new_chain].each do |book| %>
+      <li class="card" style="min-width:25%; max-width:25%">
+        <img class="card-img-top" src="<%= book.image %>" alt="">
+          <div class="card-body">
+            <p class="card-title"><%= book.title %></p>
+            <p class="card-title">著者 : <%= book.author %></P>
+          </div>
+      </li>
+    <% end %>
+    
+    <li class="chain_index_right-box">
+    <div id="likes_buttons_<%= chain[:id] %>"　class="like_button">
+      <%= render partial: 'likes/like', locals: { chain_info: chain} %>
+    </div>
+  
+    <% if user_signed_in? && chain[:user_id] == current_user.id %>
+      <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
+        <button class="btn btn-primary delete_button">
+          削除
+        </button>
+      <% end %>
+    <% else %>
+      <%= link_to user_path(id: chain[:user_id]), method: :get do %>
+        <div class="nickname">
+          <span><%= chain[:nickname] %></span>
         </div>
       <% end %>
     <% end %>
+    </li>
+    </ul>
+  <% end %>
+</div>

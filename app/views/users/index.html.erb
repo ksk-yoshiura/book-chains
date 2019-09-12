@@ -1,27 +1,38 @@
-<div class="card">
-  
+<div class="container">
+    
   <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
+    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" href="#">MyChains</a>
+        <a class="nav-link active" id="my-popular-chains-contents-tab" href="#my-popular-chains-contents" data-toggle="tab" role="tab" aria-controls="my-popular-chains-contents" aria-selected="true">
+          TheMostPopularChains
+        </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">MyBookShelf</a>
+        <a class="nav-link" id="my-chains-contents-tab" href="#my-chains-contents" data-toggle="tab" role="tab" aria-controls="my-chains-contents" aria-selected="true">
+          MyChains
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="my-books-contents-tab" href="#my-books-contents" data-toggle="tab" role="tab" aria-controls="my-books-contents" aria-selected="true">
+          MyBookShelf
+        </a>
       </li>
     </ul>
+    
+    <div class="tab-content mt-3" id="myTabContent">
+      <div id="my-popular-chains-contents" class="tab-pane fade show active" role="tabpanel" aria-labelledby="my-popular-chains-contents-tab" >
+        <h3>TheMostPopularChains</h3>
+        <%= render partial: 'chains/chain', locals: { chains: @popular_chains} %>
+      </div>
+      
+      <div id="my-chains-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="my-chains-contents-tab" >
+        <h3>MyChains</h3>
+        <%= render partial: 'chains/chain', locals: { chains: @chains} %>
+      </div>
+      
+      <div id="my-books-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="my-books-contents-tab" >
+        <h3>MyBookshelf</h3>
+        <%= render partial: 'books/book', locals: { books: @books} %>
+      </div>
   </div>
-
-  <div class="card-group w-50">
-    <%= render partial: 'chains/chain', locals: { chains: @chains} %>
-  </div>
-
-  <div class="card-group w-75">
-    <%= render partial: 'books/book', locals: { books: @books} %>
-  </div> 
-
 </div>
-
-
-
-
-
