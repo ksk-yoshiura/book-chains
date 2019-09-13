@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   
   resources :chains, only: [:show, :index] do
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
-
-  resources :books, only: [:show, :index]
 
   resources :users, only: [:show, :index] do
     resources :books
