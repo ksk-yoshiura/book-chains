@@ -17,6 +17,11 @@
           BookShelf
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="favorite-contents-tab" href="#favorite-contents" data-toggle="tab" role="tab" aria-controls="favorite-contents" aria-selected="true">
+          FavoriteChains
+        </a>
+      </li>
     </ul>
     
     <div class="tab-content mt-3" id="othersTabContent">
@@ -33,6 +38,11 @@
       <div id="books-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="books-contents-tab" >
         <h3>Bookshelf</h3>
         <%= render partial: 'books/book', locals: { books: @books} %>
+      </div>
+
+      <div id="favorite-contents" class="tab-pane fade" role="tabpanel" aria-labelledby="favorite-contents-tab" >
+        <h3>FavoriteChains</h3>
+        <%= render partial: 'chains/chain', locals: { chains: @favorite_chains} %>
       </div>
   </div>
 </div>
