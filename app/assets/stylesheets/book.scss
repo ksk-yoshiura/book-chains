@@ -11,6 +11,14 @@
 
 .book-container {
   width:100%;
+  width:100%;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: gray;
+  background: #FFF;
+  border: solid 3px #6091d3;
+  border-radius: 10px;
   ul {
     display:flex;
     margin:0 auto;

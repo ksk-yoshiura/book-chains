@@ -1,18 +1,42 @@
 .chain-container {
-  width:100%;
+    width:100%;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    font-weight: bold;
+    color: gray;
+    background: #FFF;
+    border: solid 3px #6091d3;
+    border-radius: 10px;
   ul {
     display:flex;
     margin:0 auto;
+    padding: 0.5em 1em;
     margin-bottom: 15px;
     width:750px;
+    font-weight: bold;
+    color: gray;
+    background: #FFF;
+    border: solid 3px #6091d3;
+    border-radius: 10px;
     li {
       width:100px;
+      .delete_button {
+        margin-left:15px;
       }
-
+      .nickname {
+        margin-left:15px;
+        font-size:20px;
+        color:gray;
+      }
+      }
     }
     .chain_index_right-box {
       width:100px;
+      height:100px;
       margin-left:15px;
+      margin-top:150px;
       float:right;
+      text-align:center;
+      top:100px;
     }
   }
