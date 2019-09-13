@@ -32,6 +32,12 @@ class ChainsController < ApplicationController
     chain.destroy if params[:user_id].to_i == current_user.id
     redirect_to controller: :users
   end
+  
+  def search
+    book_ids = Book.where('furigana LIKE(?)', "#{params[:keyword]}%").pluck(:id)
+    
+    render json: @chains
+  end
 
   private
   def chain_params

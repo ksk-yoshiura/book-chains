@@ -1,6 +1,6 @@
 <div class="chain-container fadein_area">
   <% chains.each do |chain| %>
-    <ul>
+    <ul class="chain-box">
     <% chain[:new_chain].each do |book| %>
       <li class="card" style="min-width:25%; max-width:25%">
         <img class="card-img-top" src="<%= book.image %>" alt="">
