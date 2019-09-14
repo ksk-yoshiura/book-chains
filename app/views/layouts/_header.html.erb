@@ -1,0 +1,45 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><h3>BookChains</h3></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content"
+        aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbar-content">
+          <% if user_signed_in?  %>
+          <span class="badge badge-secondary"><%= current_user.nickname %>
+            <%= link_to "", class:"nav-link" %>
+          </span> 
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item nav-link" >
+                <%= link_to "MyPage", "/users/", class:"nav-link" %>
+              </li>
+              <li class="nav-item nav-link" >
+                <%= link_to "MakeNewChain", "/users/#{current_user.id}/chains/new", class:"nav-link" %>
+              </li>
+              <li class="nav-item nav-link" >
+                <%= link_to "RegisterNewBook", "/users/#{current_user.id}/books/new", class:"nav-link" %>
+              </li>
+              <li class="nav-item nav-link" >
+                <%= link_to "LogOut", destroy_user_session_path, class: "nav-link", method: :delete %>
+              </li>
+            </ul>
+    
+          <% else %>
+            <ul class="navbar-nav mr-auto justify-content-end">
+              <li class="nav-item nav-link" >
+                <%= link_to "Top", "/users/#", class:"nav-link" %>
+              </li>
+              <li class="nav-item nav-link ">
+                <%= link_to "LogIn", new_user_session_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item nav-link">
+                <%= link_to "SignUp", new_user_registration_path, class:"nav-link" %>
+              </li>
+            </ul>
+        </div>
+          <% end %>
+    </div>
+  </nav>
+</header>
