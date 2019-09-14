@@ -1,6 +1,6 @@
 <div class="chain-container fadein_area">
   <% chains.each do |chain| %>
-    <ul class="chain-box">
+    <ul class="chain-box" id="result">
     <% chain[:new_chain].each do |book| %>
       <li class="card" style="min-width:25%; max-width:25%">
         <img class="card-img-top" src="<%= book.image %>" alt="">
@@ -17,11 +17,12 @@
     </div>
   
     <% if user_signed_in? && chain[:user_id] == current_user.id %>
-      <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
-        <button class="btn btn-primary delete_button">
-          削除
-        </button>
-      <% end %>
+      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteModal">
+        削除
+      </button>
+      <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <%= render partial: 'chains/delete-modal', locals: { chain: chain} %>
+      </div>
     <% else %>
       <%= link_to user_path(id: chain[:user_id]), method: :get do %>
         <div class="nickname">

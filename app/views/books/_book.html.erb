@@ -9,11 +9,14 @@
             <p>登録日 : <br><%= book.created_at.strftime("%Y-%m-%d") %></P>
             
             <% if user_signed_in? && book.user_id == current_user.id %>
-              <%= link_to user_book_path(id: book.id, user_id: current_user.id), method: :delete do %>
-                <button class="btn btn-primary">
-                  削除
-                </button>
-              <% end %>
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteModal">
+                削除
+              </button>
+              <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <%= render partial: 'chains/delete-modal', locals: { book: book} %>
+              </div>
+  
+              <% else %>
               <%= link_to edit_user_book_path(id: book.id, user_id: current_user.id), method: :get do %>
                 <button class="btn btn-primary">
                   編集
