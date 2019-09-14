@@ -9,18 +9,24 @@
   </head>
 
   <body>
-  <%= render "layouts/header" %>
+    <%= render "layouts/header" %>
+    
+    <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %>">
+      <%= msg.html_safe %>
+      </div>
+    <% end %>
   <main>
 
     <%= yield %>
-    
+
     <div id="pagetop">
       <%= fa_stacked_icon("arrow-up",class: "fa-4x") %>
     </div>
-
+  
   </main>
 
-  <% render "layouts/footer" %>
+    <%= render "layouts/footer" %>
 
   </body>
 </html>

@@ -11,7 +11,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    Book.create(image: book_params[:image], title: book_params[:title], author: book_params[:author], furigana: book_params[:furigana], user_id: current_user.id)
+    book = Book.new(image: book_params[:image], title: book_params[:title], author: book_params[:author], furigana: book_params[:furigana], user_id: current_user.id)
+    if book.save
+      flash[:success] = "本登録に成功しました!!"
+    else 
+      flash[:danger] = "本登録に失敗しました。"
+    end
     redirect_to controller: :users
   end
 
@@ -22,6 +27,7 @@ class BooksController < ApplicationController
         Chain.judge_and_destroy(book)
       end
     end
+    flash[:success] = "消去に成功しました。"
     redirect_to controller: :users
   end
 
@@ -32,6 +38,7 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params) if book.user_id == current_user.id
+    flash[:success] = "更新に成功しました。"
     redirect_to controller: :users
   end
 
