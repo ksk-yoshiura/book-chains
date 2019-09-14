@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-
+  before_action :authenticate_user!, only: [:index, :destroy]
+  before_action :move_to_index, except: [:index, :show]
+  
   def index
     @books = Book.where(user_id: current_user.id).order("created_at DESC").limit(10)
     
@@ -36,5 +38,10 @@ class UsersController < ApplicationController
     
     chain = Chain.find(params[:id])
     chain.destroy if chain.user_id == current_user.id
+  end
+  
+  private
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 end
