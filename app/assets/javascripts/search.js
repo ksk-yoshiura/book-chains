@@ -12,7 +12,8 @@ $(document).on('turbolinks:load', function(){
     dataType: 'json'
   })
   .done(function(data){ 
-    $('#result').find('li').remove();
+    var html = {}
+    $('#result').find('ul').remove();
     $(data).each(function(i, user){
       $('#result').append('<li>' + user.name + '</li>')
     });

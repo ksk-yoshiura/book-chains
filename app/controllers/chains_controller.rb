@@ -18,24 +18,33 @@ class ChainsController < ApplicationController
 
   def new
     @books = Book.where(user_id: current_user.id)
-  end  
+  end
 
   def create
-    if params[:chain].values[0].length == 4
-      @chain = Chain.create(book1_id: chain_params["book_ids"][0], book2_id: chain_params["book_ids"][1], book3_id: chain_params["book_ids"][2], book4_id: chain_params["book_ids"][3], user_id: chain_params["user_id"])
+    if params[:chain].present?
+      if params[:chain].values[0].length == 4
+        chain = Chain.new(book1_id: chain_params["book_ids"][0], book2_id: chain_params["book_ids"][1], book3_id: chain_params["book_ids"][2], book4_id: chain_params["book_ids"][3], user_id: chain_params["user_id"])
+        flash[:success] = "チェーン作成に成功しました!!" if chain.save
+        redirect_to controller: :users and return
+      end
     end
-    redirect_to action: 'new'
+    flash[:danger] = "チェーン作成に失敗しました。"
+    redirect_to action: 'new' and return
   end
   
   def destroy
     chain = Chain.find(params[:id])
-    chain.destroy if params[:user_id].to_i == current_user.id
-    redirect_to controller: :users
+    if params[:user_id].to_i == current_user.id
+      chain.destroy 
+      flash[:success] = "消去に成功しました。"
+      redirect_to controller: :users
+    end
   end
   
   def search
     book_ids = Book.where('furigana LIKE(?)', "#{params[:keyword]}%").pluck(:id)
-    
+    chains = Chain.judge_and_search(book_ids)
+    @chains = Chain.chain_arr_make(chains)
     render json: @chains
   end
 

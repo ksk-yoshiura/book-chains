@@ -45,5 +45,14 @@ class Chain < ApplicationRecord
       end
     end
   end
-  
+
+  def judge_and_search(book_ids)
+    book_ids.each do |book_id|
+      
+      
+      
+    end
+    
+  end
+
 end
