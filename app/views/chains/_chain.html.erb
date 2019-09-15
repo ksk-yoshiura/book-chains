@@ -12,17 +12,32 @@
     <% end %>
     
     <li class="chain_index_right-box">
-    <div id="likes_buttons_<%= chain[:id] %>"　class="like_button">
+    <div id="likes_buttons_<%= chain[:id] %>" class="like_button">
       <%= render partial: 'likes/like', locals: { chain_info: chain} %>
     </div>
   
     <% if user_signed_in? && chain[:user_id] == current_user.id %>
-      <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteModal">
+      
+      <button type="button" class="btn btn-secondary js-modal-open">
         削除
       </button>
-      <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <%= render partial: 'chains/delete-modal', locals: { chain: chain} %>
+      
+      <div class="modal js-modal">
+          <div class="modal__bg js-modal-close"></div>
+          <div class="modal__content">
+              <p>この操作は取り消すことができません。<br>削除しますか？</p>
+              
+              <button type="button" class="btn btn-secondary js-modal-close" data-dismiss="modal">
+                キャンセル
+              </button>
+              <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
+                  <button class="btn btn-primary delete_button">
+                    削除
+                  </button>
+                <% end %>
+          </div>
       </div>
+
     <% else %>
       <%= link_to user_path(id: chain[:user_id]), method: :get do %>
         <div class="nickname">
