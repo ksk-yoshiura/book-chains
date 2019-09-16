@@ -9,39 +9,28 @@
             <p>登録日 : <br><%= book.created_at.strftime("%Y-%m-%d") %></P>
             
             <% if user_signed_in? && book.user_id == current_user.id %>
-              <%# <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#deleteModal"> %>
-                <%# 削除 %>
-              <%# </button> %>
-              <%# <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true"> %>
-                <%# <div class="modal-dialog" role="document"> %>
-                  <%# <div class="modal-content"> %>
-                    <%# <div class="modal-header"> %>
-                      <%# <h5 class="modal-title" id="deleteModalLabel"> %>
-                <%#  %>
-                      <%# </h5> %>
-                      <%# <button type="button" class="close" data-dismiss="modal" aria-label="Close"> %>
-                        <%# <span aria-hidden="true">&times;</span> %>
-                      <%# </button> %>
-                    <%# </div> %>
-                <%#  %>
-                    <%# <div class="modal-body"> %>
-                      <%# この操作は取り消すことができません。 %>
-                      <%# <br>削除しますか？ %>
-                    <%# </div> %>
-                 <%#  %>
-                    <%# <div class="modal-footer"> %>
-                      <%# <button type="button" class="btn btn-secondary" data-dismiss="modal"> %>
-                        <%# キャンセル %>
-                      <%# </button> %>
-                  
-                        <%= link_to user_book_path(id: book.id, user_id: current_user.id), method: :delete do %>
-                          <button class="btn btn-primary delete_button">
-                            削除
-                          </button>
-                        <% end %>
-                  <%# </div> %>
-                <%# </div> %>
-              <%# </div> %>
+            
+              <button type="button" class="btn btn-secondary js-modal-open">
+                削除
+              </button>
+  
+              <div class="modal js-modal">
+                <div class="modal__bg js-modal-close"></div>
+                <div class="modal__content">
+                  <p>この操作は取り消すことができません。
+                  <br>この本を含むチェーンも一緒さに削除されます。
+                  <br>削除しますか？
+                  </p>
+                  <button type="button" class="btn btn-secondary js-modal-close" data-dismiss="modal">
+                    キャンセル
+                  </button>
+                  <%= link_to user_book_path(id: book.id, user_id: current_user.id), method: :delete do %>
+                    <button class="btn btn-primary delete_button">
+                      削除
+                    </button>
+                  <% end %>
+                </div>
+              </div>
 
             <% else %>
             <%= link_to edit_user_book_path(id: book.id, user_id: current_user.id), method: :get do %>

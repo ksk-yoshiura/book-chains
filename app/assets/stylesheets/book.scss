@@ -2,12 +2,6 @@
   background-color: gray;
   cursor: not-allowed;
 }
-.required {
-  color:red;
-}
-.required:before {
-  content: "【必須】"
-}
 
 .book-container {
   width:100%;

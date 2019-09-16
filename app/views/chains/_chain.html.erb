@@ -13,7 +13,7 @@
     
     <li class="chain_index_right-box">
     <div id="likes_buttons_<%= chain[:id] %>" class="like_button">
-      <%= render partial: 'likes/like', locals: { chain_info: chain} %>
+      <%= render partial: 'likes/like', locals: { chain: chain } %>
     </div>
   
     <% if user_signed_in? && chain[:user_id] == current_user.id %>
@@ -31,10 +31,10 @@
                 キャンセル
               </button>
               <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
-                  <button class="btn btn-primary delete_button">
-                    削除
-                  </button>
-                <% end %>
+                <button class="btn btn-primary delete_button">
+                  削除
+                </button>
+              <% end %>
           </div>
       </div>
 
