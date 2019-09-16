@@ -1,21 +1,21 @@
 <% if user_signed_in? %>
-  <% if current_user.already_liked?(chain_info) %>
+  <% if current_user.already_liked?(chain) %>
   
-    <%= link_to chain_like_path(chain_id: chain_info[:id], id: chain_info[:like].find_by(user_id: current_user.id).id), method: :delete, remote: true do %>
+    <%= link_to chain_like_path(chain_id: chain[:id], id: chain[:like].find_by(user_id: current_user.id).id), method: :delete, remote: true do %>
       <div class="vertical_like">
-        <%= fa_icon("heart", class: "red-icon fa-2x", id: "likes_buttons_#{chain_info[:id]}") %>
+        <%= fa_icon("heart", class: "red-icon fa-2x", id: "likes_buttons_#{chain[:id]}") %>
         <span class="gray-text">
-        <%= chain_info[:like].count %>
+        <%= chain[:like].count %>
         </span>
       </div>
     <% end %>
     
   <% else %>
-    <%= link_to chain_likes_path(chain_info[:id]), method: :post, remote: true do %>
+    <%= link_to chain_likes_path(chain[:id]), method: :post, remote: true do %>
       <div class="vertical_like">
-        <%= fa_icon("heart-o", class: "gray-icon fa-2x", id: "likes_buttons_#{chain_info[:id]}") %>
+        <%= fa_icon("heart-o", class: "gray-icon fa-2x", id: "likes_buttons_#{chain[:id]}") %>
         <span class="gray-text">
-        <%= chain_info[:like].count %>
+        <%= chain[:like].count %>
         </span>
       </div>
   <% end %>
@@ -24,7 +24,7 @@
     <div class="vertical_like">
       <%= fa_icon("heart", class: "gray-icon fa-2x") %>
       <span class="gray-text">
-        <%= chain_info[:like].count %> 
+        <%= chain[:like].count %> 
       </span>
     </div>
 <% end %>

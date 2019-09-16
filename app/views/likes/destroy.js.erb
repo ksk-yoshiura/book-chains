@@ -1,1 +1,1 @@
-$('#likes_buttons_<%= chain_info[:id] %>').html("<%= j(render partial: 'likes/like', locals: {chain_info: chain}) %>");
+$('#likes_buttons_<%= chain[:id] %>').html("<%= j(render partial: 'likes/like', locals: {chain: @chain}) %>");

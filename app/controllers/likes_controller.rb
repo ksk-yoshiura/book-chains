@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-  
   before_action :set_chain
 
   def create
@@ -9,7 +8,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.find_by(user_id: current_user.id, chain_id: params[:chain_id])
+    @like = Like.find_by(user_id: current_user.id, chain_id: params[:chain_id])
     like.destroy
     @likes = Like.where(chain_id: params[:chain_id])
     @chain.reload
