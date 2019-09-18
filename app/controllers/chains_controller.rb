@@ -13,7 +13,16 @@ class ChainsController < ApplicationController
   end
   
   def show
+    chain = [Chain.find(params[:id])]
+    @chain = Chain.chain_arr_make(chain)
     
+
+    @commented_chain = Chain.find(params[:id])
+    @comment = Comment.new
+    
+    @comments = @commented_chain.comments
+    
+    session[:chain_id] = @commented_chain.id
   end
 
   def new

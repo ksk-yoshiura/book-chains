@@ -45,7 +45,13 @@
         </div>
       <% end %>
     <% end %>
+    <%= link_to chain_path(id: chain[:id], user_id: current_user.id) do %>
+      <button class="btn btn-primary">
+        詳細
+      </button>
+    <% end %>
     </li>
     </ul>
   <% end %>
+    
 </div>

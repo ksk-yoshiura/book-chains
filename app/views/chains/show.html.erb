@@ -1,2 +1,14 @@
-<h4>chainsShow</h4>
-
+<div class="container" >
+  <h4>ChainsShow</h4>
+  
+  <%= render partial: 'chain', locals: { chains: @chain} %>
+  
+  <div class="comment-form fixed-bottom">
+    <%= render partial: 'comment/comment_form', locals: { chain: @chain} %>
+  </div>
+  
+  <div class="comment_media-container">
+    <%= render partial: 'comment/comment_lists', locals: { comments: @comments} %>
+  </div>
+  
+</div>

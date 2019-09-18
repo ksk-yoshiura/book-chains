@@ -1,0 +1,16 @@
+<% if @comments %>
+  <% @comments.each_with_index do |comment,i| %>
+    <div class="media">
+      <%= image_tag 'sanpei02.jpg', class: "align-self-startmr-3", height:"50px" %>
+      <div class ="media-body">
+        <ul class="comment-list">
+          <li class = "comment-id"><%= link_to "#{i+1}" %></li>
+          <li class = "comment-user-nickname"><%= comment.user.nickname %></li>
+          <li class = "comment-date"><%= comment.created_at.strftime("%Y/%m/%d %H:%M")%></li>
+        </ul>
+        <div class ="comment-content"><%= comment.content %></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
