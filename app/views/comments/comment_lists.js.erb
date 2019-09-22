@@ -1,0 +1,5 @@
+$('textarea').val('');
+$('input').val('');
+
+$('.comment_lists').append("<%= j(render 'comments/comment_lists') %>");
+$('html, body').animate({scrollTop: $(document).height()},1500);

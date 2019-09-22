@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     
-    if @comment.valid? 
+
+    if @comment.valid?
       @comment.save
       @comments = []
-      @comments << @comment 
+      @comments << @comment
       render :comment_lists
     else
       render template: "chain/show"

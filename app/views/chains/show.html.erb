@@ -4,11 +4,11 @@
   <%= render partial: 'chain', locals: { chains: @chain} %>
   
   <div class="comment-form fixed-bottom">
-    <%= render partial: 'comment/comment_form', locals: { chain: @chain} %>
+    <%= render partial: 'comments/comment_form', locals: { chain: @chain} %>
   </div>
   
-  <div class="comment_media-container">
-    <%= render partial: 'comment/comment_lists', locals: { comments: @comments} %>
+  <div class="comment_media-container comment_lists">
+    <%= render 'comments/comment_lists' %>
   </div>
   
 </div>
