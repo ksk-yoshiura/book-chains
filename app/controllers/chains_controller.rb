@@ -1,7 +1,7 @@
 class ChainsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
   before_action :move_to_index, except: [:index, :show]
-  before_action :authenticate_user!, only: [:show, :new, :create, :destroy]
+  before_action :authenticate_user!, only: [ :new, :create, :destroy]
 
   def index
     chains = Chain.all.order("created_at DESC")
