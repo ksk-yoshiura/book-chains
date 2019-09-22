@@ -13,9 +13,9 @@ class BooksController < ApplicationController
   def create
     book = Book.new(image: book_params[:image], title: book_params[:title], author: book_params[:author], furigana: book_params[:furigana], user_id: current_user.id)
     if book.save
-      flash[:success] = "本登録に成功しました!!"
+      flash[:success] = "本の登録に成功しました!!"
     else 
-      flash[:danger] = "本登録に失敗しました。"
+      flash[:danger] = "本の登録に失敗しました。"
     end
     redirect_to controller: :users
   end
