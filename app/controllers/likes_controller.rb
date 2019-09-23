@@ -16,7 +16,6 @@ class LikesController < ApplicationController
     arr = [@set_chain]
     chain_arr = Chain.chain_arr_make(arr)
     @chain = chain_arr[0]
-
   end
 
   private

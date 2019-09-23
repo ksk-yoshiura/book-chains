@@ -6,7 +6,7 @@
           <div class="card-body">
             <p class="card-title"><%= book.title %></h4>
             <p>著者 : <%= book.author %></P>
-            <p>登録日 : <br><%= book.created_at.strftime("%Y-%m-%d") %></P>
+            <p>登録日 : <br><%= book.created_at.strftime("%F") %></P>
             
             <% if user_signed_in? && book.user_id == current_user.id %>
             

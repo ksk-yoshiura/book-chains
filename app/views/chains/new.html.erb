@@ -1,13 +1,13 @@
 <div class="container" >
   <h3>MakeNewChain</h3>
-  <div class="card-header">
-  <form action="/users/<%= current_user.id %>/chains" method="post" >
-    <div id="make-new-chain" class="card-group" ></div>
-    <input type="submit" value ="RegisterNewChain" class= "btn btn-primary btn-block" >
-  </form>
+    <p>本を四冊選んでください</p>
+      <div class="card-header">
+      <form action="/users/<%= current_user.id %>/chains" method="post" >
+        <div id="make-new-chain" class="book-container card-group" ></div>
+        <input type="submit" value ="RegisterNewChain" class= "btn btn-primary btn-block" >
+      </form>
 
-
-<h3>BookShelf</h3>
+  <h3>BookShelf</h3>
   <div class="book-container fadein_area">
     <ul>
       <% @books.each do |book| %>
@@ -16,7 +16,7 @@
             <div class="card-body">
               <p class="card-title"><%= book.title %></p>
               <p>著者 : <%= book.author %></P>
-              <p>登録日 : <br><%= book.created_at.strftime("%Y-%m-%d") %></P>
+              <p>登録日 : <br><%= book.created_at.strftime("%F") %></P>
               
               <button class="btn btn-primary new-chain-btn-add" 
               data-book-id="<%= book.id %>" data-book-title="<%= book.title %>"
@@ -25,8 +25,7 @@
             </div>
         </li>
       <% end %>
-     
     </ul> 
-    <div id ="bookshelf"></div>
+    <ul id ="bookshelf"></ul>
   </div>
 </div>
