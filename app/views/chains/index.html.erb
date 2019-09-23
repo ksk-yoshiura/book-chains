@@ -1,10 +1,10 @@
 <div class="container" >
-  <%# <div class="form-box"> %>
-    <%# <form class="form-inline justify-content-end"> %>
-      <%# <input id="form" class="form-cotrol mr-sm-2" type="search" placeholder="search chains" aria-label="search chains"> %>
-      <%# <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">検索</button> %>
-    <%# </form> %>
-  <%# </div> %>
+  <div class="form-box">
+    <%= form_tag search_chains_path, class: "form-inline justify-content-end", method: :get, remote: true do %>
+      <%= text_field_tag :search, params[:keyword], class: "form-cotrol mr-sm-2", placeholder: "search chains" %>
+      <%= submit_tag '検索', class: "btn btn-outline-success my-2 my-sm-0 search-btn" %>
+    <% end %>
+  </div>
 
   <table class= "table table-bordered user_ranking">
     <tr>人気職人</tr>
@@ -21,7 +21,7 @@
   </table>
   
   <h4>NewChainsList</h4>
-
+  <div id="search-result">
     <%= render partial: 'chain', locals: { chains: @chains} %>
-  
+  </div>
 </div>

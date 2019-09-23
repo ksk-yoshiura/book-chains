@@ -15,14 +15,11 @@ class ChainsController < ApplicationController
   def show
     chain = [Chain.find(params[:id])]
     @chain = Chain.chain_arr_make(chain)
-    
 
     @commented_chain = Chain.find(params[:id])
     @comment = Comment.new
     
     @comments = @commented_chain.comments
-    
-    session[:chain_id] = @commented_chain.id
   end
 
   def new
@@ -37,7 +34,7 @@ class ChainsController < ApplicationController
         redirect_to controller: :users and return
       end
     end
-    flash[:danger] = "チェーン作成に失敗しました。"
+    flash[:danger] = "チェーン作成に失敗しました。使用できる本は四冊です。"
     redirect_to action: 'new' and return
   end
   
@@ -51,10 +48,11 @@ class ChainsController < ApplicationController
   end
   
   def search
-    book_ids = Book.where('furigana LIKE(?)', "#{params[:keyword]}%").pluck(:id)
+    book_ids = Book.where('furigana LIKE(?)', "#{params[:search]}%").pluck(:id)
+    if book_ids.present?
     chains = Chain.judge_and_search(book_ids)
     @chains = Chain.chain_arr_make(chains)
-    render json: @chains
+    end
   end
 
   private

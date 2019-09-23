@@ -47,13 +47,18 @@ class Chain < ApplicationRecord
     end
   end
 
-  def judge_and_search(book_ids)
-    book_ids.each do |book_id|
-      
-      
-      
-    end
+  def self.judge_and_search(book_ids)
+    books_in_chains = []
+    chains = Chain.all.order("created_at DESC")
     
+    chains.each do |chain|
+      book_ids.each do |book_id|
+        if chain.book1_id == book_id || chain.book2_id == book_id || chain.book3_id == book_id || chain.book4_id == book_id
+          books_in_chains << chain
+        end
+      end
+    end
+    return books_in_chains
   end
 
 end
