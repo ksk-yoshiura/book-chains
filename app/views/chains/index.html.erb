@@ -12,7 +12,7 @@
     <% @user_ranks.each_with_index do |user, index| %>
       <td>
       <span>第<%= index + 1 %>位</span>
-      <%= link_to user_path(id: user.id), method: :get do %>
+      <%= link_to user_path(id: user.id), class: "user_nickname", method: :get do %>
       <%= user.nickname %>
       <% end %>
       </td>
