@@ -6,8 +6,13 @@ class BooksController < ApplicationController
   
   def show
     @book = Book.find(params[:id])
+    @user = User.find(@book.user_id)
 
-    
+    chains = Chain.judge_and_search([params[:id].to_i])
+    most_favorite_chain_id = Like.like_counter(chains)
+    most_favorite_chain = Chain.where(id: most_favorite_chain_id)
+
+    @most_favorite_chain = Chain.chain_arr_make(most_favorite_chain)
   end
   
   def new

@@ -40,7 +40,7 @@ class Chain < ApplicationRecord
 
   def self.judge_and_destroy(book)
     chains = Chain.where(user_id: book.user_id)
-     chains.each do |chain|
+      chains.each do |chain|
       if chain.book1_id == book.id || chain.book2_id == book.id || chain.book3_id == book.id || chain.book4_id == book.id
         chain.destroy
       end

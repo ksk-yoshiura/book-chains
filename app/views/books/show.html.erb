@@ -1,1 +1,16 @@
-<h2>bookshow</h2>
+<div class="book_show">
+  <img class="book_show__cover" src="<%= @book.image %>" alt="" height="300px">
+  <ul class="book_show__list">
+    <li class="book_show__title">タイトル : <%= @book.title %></li>
+    <li class="book_show__author">著者 : <%= @book.author %></li>
+    <li class="book_show__date">登録日 : <%= @book.created_at.strftime("%F") %></li>
+    <li class="book_show__user">登録者 : <%= @user.nickname %></li>
+  </ul>
+</div>
+
+<div class="container">
+<h4>MostFavoriteChain</h4>
+  <%= render partial: 'chains/chain', locals: { chains: @most_favorite_chain} %>
+</div>
+
+
