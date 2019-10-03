@@ -1,4 +1,5 @@
 <div class="chain-container fadein_area">
+
   <% chains.each do |chain| %>
     <ul class="chain-box" id="result">
     <% chain[:new_chain].each do |book| %>
@@ -25,19 +26,19 @@
       </button>
       
       <div class="modal js-modal">
-          <div class="modal__bg js-modal-close"></div>
-          <div class="modal__content">
-              <p>この操作は取り消すことができません。<br>削除しますか？</p>
-              
-              <button type="button" class="btn btn-secondary js-modal-close" data-dismiss="modal">
-                キャンセル
-              </button>
-              <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
-                <button class="btn btn-primary delete_button">
-                  削除
-                </button>
-              <% end %>
-          </div>
+        <div class="modal__bg js-modal-close"></div>
+        <div class="modal__content">
+          <p>この操作は取り消すことができません。<br>削除しますか？</p>
+          
+          <button type="button" class="btn btn-secondary js-modal-close" data-dismiss="modal">
+            キャンセル
+          </button>
+          <%= link_to user_chain_path(id: chain[:id], user_id: current_user.id), method: :delete do %>
+            <button class="btn btn-primary delete_button">
+              削除
+            </button>
+          <% end %>
+        </div>
       </div>
 
     <% else %>
