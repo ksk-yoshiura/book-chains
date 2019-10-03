@@ -3,7 +3,9 @@
     <ul class="chain-box" id="result">
     <% chain[:new_chain].each do |book| %>
       <li class="card" style="min-width:25%; max-width:25%">
-        <img class="card-img-top" src="<%= book.image %>" alt="">
+        <%= link_to user_book_path(id: book.id, user_id: current_user.id), method: :get do %>
+          <img class="card-img-top" src="<%= book.image %>" alt="">
+        <% end %>
           <div class="card-body">
             <p class="card-title"><%= book.title %></p>
             <p class="card-title">著者 : <%= book.author %></P>

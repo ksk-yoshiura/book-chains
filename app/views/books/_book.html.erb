@@ -2,7 +2,9 @@
   <ul>
     <% books.each do |book| %>
       <li class="card" style="min-width:20%; max-width:20%">
-        <img class="card-img-top" src="<%= book.image %>" alt="">
+        <%= link_to user_book_path(id: book.id, user_id: current_user.id), method: :get do %>
+          <img class="card-img-top" src="<%= book.image %>" alt="">
+        <% end %>
           <div class="card-body">
             <p class="card-title"><%= book.title %></h4>
             <p>著者 : <%= book.author %></P>
@@ -32,13 +34,12 @@
                 </div>
               </div>
 
-            <% else %>
-            <%= link_to edit_user_book_path(id: book.id, user_id: current_user.id), method: :get do %>
-              <button class="btn btn-primary">
-                編集
-              </button>
+              <%= link_to edit_user_book_path(id: book.id, user_id: current_user.id), method: :get do %>
+                <button class="btn btn-primary">
+                  編集
+                </button>
+              <% end %>
             <% end %>
-          <% end %>
     
           </div>
       </li>
