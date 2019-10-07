@@ -31,11 +31,11 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     if params[:user_id].to_i == current_user.id
-      if book.destroy 
+      if book.destroy
         Chain.judge_and_destroy(book)
       end
+      flash[:success] = "消去に成功しました。"
     end
-    flash[:success] = "消去に成功しました。"
     redirect_to controller: :users
   end
 
